@@ -10,7 +10,7 @@ services:
     image: laravel
     container_name: laravel-app
     restart: unless-stopped
-    working_dir: /var/grep datadir /etc/my.cnfwww/
+    working_dir: /var/www/
     volumes:
       - ./:/var/www
     networks:
