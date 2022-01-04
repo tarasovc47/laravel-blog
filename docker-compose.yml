@@ -1,0 +1,59 @@
+version: "3.9"
+services:
+  app:
+    build:
+      args:
+        user: laravel
+        uid: 1000
+      context: ./
+      dockerfile: Dockerfile
+    image: laravel
+    container_name: laravel-app
+    restart: unless-stopped
+    working_dir: /var/grep datadir /etc/my.cnfwww/
+    volumes:
+      - ./:/var/www
+    networks:
+      - laravel
+
+  mysql:
+    image: mysql:8.0
+    container_name: laravel-db
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./docker-compose/mysql:/docker-entrypoint-initdb.d
+      - ./docker-compose/mysql/files:/var/lib/mysql/
+    networks:
+      - laravel
+
+  nginx:
+    image: nginx:1.21.5
+    container_name: laravel-nginx
+    restart: unless-stopped
+    ports:
+      - 80:80
+    volumes:
+      - ./:/var/www
+      - ./docker-compose/nginx:/etc/nginx/conf.d/
+    networks:
+      - laravel
+  adminer:
+    image: adminer:4.8.1
+    container_name: laraver-adminer
+    ports:
+      - 8080:8080
+    links:
+      - mysql
+    networks:
+      - laravel
+
+networks:
+  laravel:
+    driver: bridge
