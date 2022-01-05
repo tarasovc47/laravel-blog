@@ -14,12 +14,12 @@ class CreateAuthorsTable extends Migration
     public function up()
     {
         Schema::create('authors', function (Blueprint $table) {
-            $table->bigInteger('id')->primary();
-            $table->string('name')->index();
+            $table->bigInteger('id')->autoIncrement()->index();
+            $table->string('name')->unique()->index();
             $table->string('avatar')->default('/images/avatar/no-avatar.png');
             $table->date('birthday')->nullable();
             $table->string('biography')->default('some biography');
-            $table->string('slug')->nullable();
+            $table->string('slug');
             $table->timestamps();
         });
     }
