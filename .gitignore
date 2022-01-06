@@ -1,0 +1,16 @@
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.phpunit.result.cache
+.idea
+.bash_history
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+old.composer.lock
+composer.lock
+docker-compose/mysql/files
+package-lock.json
