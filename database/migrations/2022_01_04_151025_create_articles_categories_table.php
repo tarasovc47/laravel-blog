@@ -14,9 +14,8 @@ class CreateArticlesCategoriesTable extends Migration
     public function up()
     {
         Schema::create('articles_categories', function (Blueprint $table) {
-            $table->bigInteger('id')->autoIncrement()->index();
-            $table->bigInteger('article_id')->index();
-            $table->bigInteger('category_id')->index();
+            $table->bigInteger('article_id');
+            $table->bigInteger('category_id');
             $table->timestamps();
             $table->foreign('article_id')->references('id')->on('articles')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
