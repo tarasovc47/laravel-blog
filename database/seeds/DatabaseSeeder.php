@@ -1,8 +1,9 @@
 <?php
 
-use App\Models\Article;
-use App\Models\Author;
-use App\Models\Category;
+use Database\Seeders\ArticlesCategoryTableSeeder;
+use Database\Seeders\ArticleTableSeeder;
+use Database\Seeders\AuthorTableSeeder;
+use Database\Seeders\CategoryTableSeeder;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -14,13 +15,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
         $this->call([
-            AuthorsSeeder::class,
-            CategoriesSeeder::class,
-            ArticlesSeeder::class]);
-        factory(Author::class, 200)->create();
-        factory(Category::class, 100)->create();
-        factory(Article::class, 500)->create();
+            CategoryTableSeeder::class,
+            AuthorTableSeeder::class,
+            ArticleTableSeeder::class,
+            ArticlesCategoryTableSeeder::class
+        ]);
     }
 }
