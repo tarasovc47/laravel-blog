@@ -14,3 +14,4 @@ old.composer.lock
 composer.lock
 docker-compose/mysql/files
 package-lock.json
+/storage/debugbar

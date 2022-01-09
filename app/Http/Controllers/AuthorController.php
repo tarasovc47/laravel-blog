@@ -13,8 +13,6 @@ class AuthorController extends Controller
     }
     public function show($slug)
     {
-        /*$author = Author::query()->where('slug', '=', $slug);
-        return view('author.view', compact('author'));*/
         return view('author.view', [
             'author' => Author::query()->where('slug', '=', $slug)->first(),
         ]);
