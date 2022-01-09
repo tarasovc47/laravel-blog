@@ -4,14 +4,9 @@ Route::get('/', function () {
     return view('home');
 });
 Route::get('/authors', 'AuthorController@index');
-    //return AuthorResource::collection(Author::all());
-//});
 Route::get('/authors/{id}', 'AuthorController@show');// {
-    //return new AuthorResource(Author::findOrFail($id));
-//});
-Route::get('/categories', function () {
-    return view('category.index');
-});
+Route::get('/categories', 'CategoryController@index');
+Route::get('/categories/{id}', 'CategoryController@show');
 Route::get('/articles', function () {
     return view('article.index');
 });
