@@ -8,10 +8,10 @@ class AuthorController extends Controller
 {
     public function index()
     {
-        $authors = Author::query()->simplePaginate(10);
+        $authors = Author::simplePaginate(10);
         return view('author.index', compact('authors'));
     }
-    public function one($slug)
+    public function show($slug)
     {
         /*$author = Author::query()->where('slug', '=', $slug);
         return view('author.view', compact('author'));*/
