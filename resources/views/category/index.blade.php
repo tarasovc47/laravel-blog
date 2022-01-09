@@ -24,5 +24,5 @@
             </tr>
         @endforeach
     </table>
-    {{ $categories->links() }}
+    {{ $categories->appends(request()->except('page'))->links() }}
 @endsection

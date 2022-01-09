@@ -27,7 +27,6 @@
                 </tr>
             @endforeach
         </table>
-        {{ $authors->links() }}
+        {{ $authors->appends(request()->except('page'))->links() }}
         @endif
-
 @endsection
