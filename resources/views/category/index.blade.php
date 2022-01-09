@@ -4,6 +4,12 @@
     Категории
 @endsection
 
+@section('categorySearch')
+    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="{{route('categorySearch')}}" method="GET">
+        <input type="search" class="form-control form-control-dark" name="search" placeholder="Поиск по категориям..." aria-label="Search">
+    </form>
+@endsection
+
 @section('content')
     <h1>Категории</h1>
     <table class="table">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Author;
+use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
@@ -15,6 +16,14 @@ class AuthorController extends Controller
     {
         return view('author.view', [
             'author' => Author::query()->where('slug', '=', $slug)->first(),
+        ]);
+    }
+    public function search(Request $request)
+    {
+        $q = $request->input('search');
+        $authors = Author::query()->where('name', 'LIKE', "%{$q}%")->paginate(10);
+        return view('author.index', [
+            'authors' => $authors
         ]);
     }
 }

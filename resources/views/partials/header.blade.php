@@ -8,11 +8,13 @@
                 <li><a href="/articles" class="nav-link px-2 text-white">Статьи</a></li>
                 <li><a href="/categories" class="nav-link px-2 text-white">Категории</a></li>
             </ul>
-
-            <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                <input type="search" class="form-control form-control-dark" placeholder="Поиск..." aria-label="Search">
-            </form>
-
+            @if(Request::segment(1) == "authors")
+                @yield("authorSearch")
+            @elseif(Request::segment(1) == "categories")
+                @yield("categorySearch")
+            @elseif(Request::segment(1) == "articles")
+                @yield("articleSearch")
+            @endif
         </div>
     </div>
 </header>

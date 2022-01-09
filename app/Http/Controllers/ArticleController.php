@@ -20,6 +20,17 @@ class ArticleController extends Controller
         ]);
     }
 
+    public function search(Request $request)
+    {
+        $q = $request->input('search');
+        $articles = Article::query()->where('title', 'LIKE', "%{$q}%")
+            ->orWhere('text', 'LIKE', "%{$q}%")
+            ->paginate(10);
+        return view('article.index', [
+            'articles' => $articles
+        ]);
+    }
+
     public function store(Request $request)
     {
         return Article::create($request->all());

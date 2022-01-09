@@ -4,6 +4,12 @@
 Автор {{ $author->name }}
 @endsection
 
+@section('authorSearch')
+    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" action="{{route('authorSearch')}}" method="GET">
+        <input type="search" class="form-control form-control-dark" name="search" placeholder="Поиск по авторам..." aria-label="Search">
+    </form>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">

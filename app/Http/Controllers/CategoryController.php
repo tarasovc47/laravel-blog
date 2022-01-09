@@ -18,4 +18,13 @@ class CategoryController extends Controller
             'category' => Category::query()->where('slug', '=', $slug)->first(),
         ]);
     }
+
+    public function search(Request $request)
+    {
+        $q = $request->input('search');
+        $categories = Category::query()->where('title', 'LIKE', "%{$q}%")->paginate(10);
+        return view('category.index', [
+            'categories' => $categories
+        ]);
+    }
 }
