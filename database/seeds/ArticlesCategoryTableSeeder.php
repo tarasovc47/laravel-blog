@@ -15,7 +15,7 @@ class ArticlesCategoryTableSeeder extends Seeder
     public function run()
     {
         ArticlesCategory::factory()
-            ->count(300)
+            ->count(15000)
             ->create();
     }
 }

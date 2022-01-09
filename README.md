@@ -22,13 +22,16 @@ docker-compose exec app php artisan migrate:refresh --seed
 открыть просто localhost
 
 ### для windows:
-скачать и распаковать zip в папку
-запустить powershell в контексте папки и выполнить последовательно:
-docker-compose build app
-docker-compose up -d
-docker-compose exec app composer install
-docker-compose exec app php artisan key:generate
-docker-compose exec app npm install
-docker-compose exec app npm run dev
-docker-compose exec app npm install bootstrap
-docker-compose exec app npm install bootstrap-icons
+клонировать проект и из контекста последовательно выполнить:
+
+docker-compose build app <br>
+docker-compose up -d <br>
+docker-compose exec app composer install <br>
+docker-compose exec app php artisan key:generate <br>
+docker-compose exec app npm install <br>
+docker-compose exec app npm run dev <br>
+docker-compose exec app npm install bootstrap <br>
+docker-compose exec app npm install bootstrap-icons <br>
+docker-compose exec app php composer dump-autoload <br>
+docker-compose exec app php artisan migrate --seed
+

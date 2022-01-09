@@ -16,7 +16,7 @@ class CategoryTableSeeder extends Seeder
     public static function run()
     {
         $categories = [];
-        for ($i = 1; $i <= 20; $i++)
+        for ($i = 1; $i <= 300; $i++)
         {
             $categoryTitle = "Категория №" . $i;
             $categories[] = [
