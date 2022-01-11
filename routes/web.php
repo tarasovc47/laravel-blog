@@ -4,7 +4,7 @@ Route::get('/', function () {
     return view('home');
 });
 Route::get('/authors', 'AuthorController@index');
-Route::get('/authors/{id}', 'AuthorController@show');// {
+Route::get('/authors/{id}', 'AuthorController@show');
 Route::get('/categories', 'CategoryController@index');
 Route::get('/categories/{id}', 'CategoryController@show');
 Route::get('/articles', function () {

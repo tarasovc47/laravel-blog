@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ArticleResource;
+use App\Http\Resources\AuthorResource;
+use App\Models\Article;
 use App\Models\Author;
 use Illuminate\Http\Request;
+use Illuminate\Auth\Passwords;
 
 class AuthorController extends Controller
 {
@@ -26,4 +30,25 @@ class AuthorController extends Controller
             'authors' => $authors
         ]);
     }
+    /**
+     * Проверка API postman-ом
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+     */
+    /*public function index()
+    {
+        $authors = Author::simplePaginate(10);
+        return AuthorResource::collection($authors);
+        //return view('author.index', compact('authors'));
+    }
+    public function articles($id)
+    {
+        $articles = Article::where('author_id', $id)->orderBy('id', 'desc')->paginate();
+        return ArticleResource::collection($articles);
+    }
+    public function show($id)
+    {
+        $author = Author::where('id',$id)->get();
+        return AuthorResource::collection($author);
+    }*/
 }
