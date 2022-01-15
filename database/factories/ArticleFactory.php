@@ -15,12 +15,12 @@ class ArticleFactory extends Factory
      */
     public function definition()
     {
-        $title = $this->faker->word();
+        $title = $this->faker->realText(30);
         return [
             'title' => $title,
             'annotation' => $this->faker->sentence(3),
             'text' => $this->faker->realText(100),
-            'author_id' => rand(1,30),
+            'author_id' => rand(1,500),
             'slug' => str_slug($title)
         ];
     }

@@ -15,7 +15,7 @@ class AuthorFactory extends Factory
      */
     public function definition()
     {
-        $name = ucwords($this->faker->userName);
+        $name = ucwords($this->faker->name);
         return [
             'name' => $name,
             'birthday' => $this->faker->date('Y-m-d'),

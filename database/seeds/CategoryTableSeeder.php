@@ -2,9 +2,9 @@
 
 namespace Database\Seeders;
 
+use Faker\Generator as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Str;
 
 class CategoryTableSeeder extends Seeder
 {
@@ -13,16 +13,16 @@ class CategoryTableSeeder extends Seeder
      *
      * @return void
      */
-    public static function run()
+    public static function run(Faker $faker)
     {
         $categories = [];
         for ($i = 1; $i <= 300; $i++)
         {
-            $categoryTitle = "Категория №" . $i;
+            $title = $faker->sentence(2);
             $categories[] = [
-                'title' => $categoryTitle,
-                'description' => Str::random(),
-                'slug' => str_slug($categoryTitle)
+                'title' => $title,
+                'description' => $faker->sentence(3),
+                'slug' => str_slug($title)
             ];
         }
         DB::table('categories')->insert($categories);
