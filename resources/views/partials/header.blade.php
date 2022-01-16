@@ -14,6 +14,8 @@
                 @yield("categorySearch")
             @elseif(Request::segment(1) == "articles")
                 @yield("articleSearch")
+            @elseif(Route::get('/'))
+                @yield("globalSearch")
             @endif
         </div>
     </div>

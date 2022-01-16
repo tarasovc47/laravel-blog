@@ -18,3 +18,4 @@ Route::delete('articles/{id}', 'ArticleController@delete');
 Route::get('authorSearch', 'AuthorController@search')->name('authorSearch');
 Route::get('categorySearch', 'CategoryController@search')->name('categorySearch');
 Route::get('articleSearch', 'ArticleController@search')->name('articleSearch');
+Route::get('globalSearch', 'Controller@globalSearch')->name('globalSearch');
