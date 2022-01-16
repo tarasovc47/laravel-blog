@@ -22,9 +22,8 @@ class ArticleController extends Controller
 
     public function show($slug)
     {
-        return view('article.view', [
-            'article' => Article::query()->where('slug', '=', $slug)->first()
-        ]);
+        $article = Article::query()->where('slug', '=', $slug)->first();
+        return view('article.view', compact('article'));
     }
 
     /**

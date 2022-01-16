@@ -19,18 +19,17 @@ class CategoryController extends Controller
     }
     public function show($slug)
     {
-        return view('category.view', [
-            'category' => Category::query()->where('slug', '=', $slug)->first(),
-        ]);
+        $category = Category::query()->where('slug', '=', $slug)->first();
+        return view('category.view', compact('category'));
     }
 
     public function search(Request $request)
     {
         $q = $request->input('search');
-        $categories = Category::query()->where('title', 'LIKE', "%{$q}%")->paginate(10);
-        return view('category.index', [
-            'categories' => $categories
-        ]);
+        $categories = Category::query()->where('title', 'LIKE', "%{$q}%")
+            ->orWhere('description', 'LIKE', "%{$q}%")
+            ->paginate(10);
+        return view('category.index', compact('categories'));
     }
     /**
      * проверка API Postman-ом

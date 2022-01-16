@@ -18,17 +18,16 @@ class AuthorController extends Controller
     }
     public function show($slug)
     {
-        return view('author.view', [
-            'author' => Author::query()->where('slug', '=', $slug)->first(),
-        ]);
+        $author = Author::query()->where('slug', '=', $slug)->first();
+        return view('author.view', compact('author'));
     }
     public function search(Request $request)
     {
         $q = $request->input('search');
-        $authors = Author::query()->where('name', 'LIKE', "%{$q}%")->paginate(10);
-        return view('author.index', [
-            'authors' => $authors
-        ]);
+        $authors = Author::query()->where('name', 'LIKE', "%{$q}%")
+            ->orWhere('biography', 'LIKE', "%{$q}%")
+            ->paginate(10);
+        return view('author.index', compact('authors'));
     }
     /**
      * Проверка API postman-ом
