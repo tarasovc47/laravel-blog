@@ -6,7 +6,7 @@
 
 
 ###для Linux:
-запустить compile_project_linux.sh, открыть localhost
+клонировать проект и запустить compile_project_linux.sh, открыть localhost
 
 ### для windows:
 клонировать проект и запустить compile_project_windows.bat, открыть localhost

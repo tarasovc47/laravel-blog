@@ -1,6 +1,4 @@
 #!/bin/bash
-git clone https://github.com/tarasovc47/laravel-blog laravel &&
-cd laravel &&
 docker-compose build app &&
 docker-compose up -d &&
 docker-compose exec app composer install &&
