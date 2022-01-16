@@ -11,6 +11,7 @@
 @endsection
 
 @section('content')
+    <div class="container">
     <h1>Статьи</h1>
     <table class="table">
         <thead>
@@ -24,9 +25,10 @@
                 <td><a href="/articles/{{$article->slug}}">{{$article->title}}</a></td>
                 <td>{{$article->annotation}}</td>
                 <td>{{$article->text}}</td>
-                <td>{{$article->author_id}}</td>
+                <td><a href="/authors/{{$article->author->slug}}">{{$article->author->name}}</a></td>
             </tr>
         @endforeach
     </table>
+    </div>
     {{ $articles->appends(request()->except('page'))->links() }}
 @endsection

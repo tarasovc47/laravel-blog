@@ -17,6 +17,12 @@
                 Имя: {{ $author->name }} <br>
                 День рождения: {{ $author->birthday }} <br>
                 Биография: {{ $author->biography }} <br>
+                Статьи этого автора:
+                <ul>
+                    @foreach($author->article as $article)
+                        <li>{{$article->id }} <a href="/articles/{{$article->slug}}">{{$article->title}}</a></li>
+                    @endforeach
+                </ul>
             </div>
             <div class="col-md-4">
                 <img width="200" src="{{ asset('images/avatar/no-avatar.png') }}"> <br>
