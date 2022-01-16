@@ -11,6 +11,7 @@
 @endsection
 
 @section('content')
+    <div class="container">
     <h1>Категории</h1>
     <table class="table">
         <thead>
@@ -25,4 +26,5 @@
         @endforeach
     </table>
     {{ $categories->appends(request()->except('page'))->links() }}
+    </div>
 @endsection

@@ -11,6 +11,7 @@
 @endsection
 
 @section('content')
+    <div class="container">
     <h1>Авторы</h1>
     <table class="table">
         <thead>
@@ -29,4 +30,5 @@
         </table>
         {{ $authors->appends(request()->except('page'))->links() }}
         @endif
+    </div>
 @endsection
