@@ -18,4 +18,21 @@ class Article extends Model
         //статья принадлежит многим категориям
         return $this->belongsToMany(Category::class, 'articles_categories');
     }
+    /**
+     * @OA\Definition (
+     *     definition="Article",
+     *     @OA\Property(
+     *         property="id",
+     *         type="integer"
+     *     ),
+     *     @OA\Property(
+     *         property="title",
+     *         type="string"
+     *     ),
+     *     @OA\Property(
+     *         property="text",
+     *         type="string"
+     *     )
+     * )
+     */
 }

@@ -14,6 +14,22 @@ use App\Models\Article;
 
 class ArticleController extends Controller
 {
+    /**
+     * @OA\Get(
+     *     path="/articles",
+     *     summary="Get list of articles",
+     *     tags={"Articles"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @OA\Schema(
+     *             type="array",
+     *             @OA\Items(ref="#/definitions/Articles"),
+     *         )
+     *     )
+     * )
+     */
+
     public function index()
     {
         $articles = Article::query()
@@ -22,6 +38,29 @@ class ArticleController extends Controller
         return view('article.index', compact('articles'));
     }
 
+    /**
+     * @OA\Get(
+     *     path="articles/{id}",
+     *     summary="Get article by ID",
+     *     tags={"Articles"},
+     *     description="Get article by ID",
+     *     @OA\Parameter(
+     *         name="id",
+     *         in="path",
+     *         description="Article ID",
+     *         required=true,
+     *     ),
+     *     @OA\Response(
+     *         response=200,
+     *         description="successful operation",
+     *         @SWG\Schema(ref="#/definition/Article"),
+     *     ),
+     *     @OA\Response(
+     *         response="404",
+     *         description="Atricle not found",
+     *     )
+     * )
+     */
     public function show($slug)
     {
         $article = Article::query()->where('slug', '=', $slug)->first();
