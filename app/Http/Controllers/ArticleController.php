@@ -16,7 +16,9 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        $articles = Article::simplePaginate(10);
+        $articles = Article::query()
+            ->with('author')
+            ->paginate(10);
         return view('article.index', compact('articles'));
     }
 
